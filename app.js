@@ -7,25 +7,12 @@ const expressSession = require('express-session');
 const { initializingPassport } = require('./config/passportConfig.js');
 const http = require("http");          // For creating the HTTP server
 const socketio = require("socket.io");  // For Socket.io integration
-
-// Import routers
-const vendorRouter = require('./routes/vendor');
-const authRouter = require('./routes/auth');
-const inventoryRouter = require('./routes/inventory');
-const userRouter = require('./routes/users');
-const supplyRouter = require('./routes/supply');
-const express = require('express')
-const vendorRouter = require('./routes/vendor.js')
-const authRouter = require('./routes/auth')
-const inventoryRouter = require('./routes/inventory')
-const userRouter = require('./routes/users.js')
+const staticRouter = require('./routes/static');
 const supplyRouter = require('./routes/orders.js')
-const path = require('path');
-const ejs = require('ejs')
-const passport = require('passport')
-const mongoose = require('mongoose')
-const expressSession = require('express-session')
-const {initializingPassport} = require('./config/passportConfig.js')
+const inventoryRouter = require('./routes/inventory.js')
+const authRouter = require('./routes/auth.js')
+const userRouter = require('./routes/users.js')
+
 const restrictTo = require('./config/authorize.js')
 
 
@@ -59,28 +46,13 @@ app.use(passport.session());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Routes
-app.use('/api/auth', authRouter);        // Authentication route for login and signup
-app.use('/api/drugs', inventoryRouter);  // Drug inventory routes
-app.use('/api/vendor', vendorRouter);    // Vendor management routes
-app.use('/api/supply-orders', supplyRouter);  // Supply orders routes
-app.use('/api/user', userRouter);        // User management routes
-
-// Homepage route
-
 app.use('/api/auth', authRouter)    // authentication route for login and signup
 app.use('/api/drugs', restrictTo(["staff"]), inventoryRouter)      // for the drug inventory - to get the list of drugs and to add any drug to the inventory
-app.use('/api/vendor', vendorRouter)
 app.use('/api/orders', supplyRouter)
 app.use('/api/user', userRouter)
+app.use('/', staticRouter)
 
-app.get('/', (req, res) => {
-    res.end("homepage");
-});
 //route for tracking 
-app.get('/track',(req,res)=>{
-    res.render("index")
-})
 
 // Socket.io setup(logic of traking starts here)
 io.on("connection", function(socket) {
@@ -97,16 +69,6 @@ io.on("connection", function(socket) {
     });
 });//logic of traking ends here
 
-// Start the server
-server.listen(process.env.PORT || 3000, () => {
-    console.log(`Server started on http://localhost:${process.env.PORT || 3000}`);
-});
 
-    res.render('homepage', {user : req.user});
-})
-
-app.get('/about', (req, res) => {
-    res.render('about', {user : req.user});
-})
 
 app.listen(process.env.PORT, () => console.log(`server Started at port ${process.env.PORT}`))

@@ -22,9 +22,12 @@
         <div class="content">
             <h2>We Track ! We Supply !</h2>
             <p>Empowering Healthcare: End-to-End Drug Supply Management</p>
-            <a href="checkIn.html">
-                <button class="get-started-btn">GET STARTED</button>
-            </a>
+            <% if (!user) { %>
+             
+                <a href="/checkin">
+                    <button class="get-started-btn">GET STARTED</button>
+                </a>
+            <% } %>
         </div>
     </div>
     <main>

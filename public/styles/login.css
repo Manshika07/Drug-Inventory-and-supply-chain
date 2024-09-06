@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Title{
+    max-width: fit-content;
+    margin-left:40%;
+    }
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../images/hospitallogin.webp');
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: rgb(163, 207, 247);
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+header .Title h1 {
+    font-size: 24px;
+    color: #2D5C9E;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-container {
+    margin-top: 5%;
+    background-color: #A3CFF7;    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container h2 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-container .login_option {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-container form .input_box {
+    margin-bottom: 15px;
+}
+
+.form-container form .input_box label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container form .input_box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.form-container form .input_box input:focus {
+    outline-color: #2D5C9E;
+    outline-style: solid;
+    outline-width: 2px;
+
+}
+
+.form-container form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2D5C9E;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.form-container form button:hover {
+    background-color: #1a3a6b;
+}
+
+footer {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    background-color: #A3CFF7;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+footer p {
+    font-size: 14px;
+    margin: 0 0 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 2px; 
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #2D5C9E;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+footer a {
+    color: #2D5C9E;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-container h2 {
+        font-size: 18px;
+    }
+}

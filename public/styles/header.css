@@ -1,0 +1,141 @@
+
+header {
+    background-color: #cef1f4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    color: #333;
+    height: 60px;
+  }
+  
+  .head-container {
+    padding: 70px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(
+        rgb(163, 207, 247, 0.4),
+        rgb(163, 207, 247, 0.4)
+      ),
+      url("../images/homepage-images/homepageBackground.jpg");
+    text-align: center;
+    object-fit: contain;
+    height: 300px;
+  }
+  
+  .head-container .content h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: rgb(160 226 255);
+  }
+  
+  .head-container .content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+  }
+  
+  header ul {
+      text-decoration: none;
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      width: 170px;
+      gap: 20px;
+  
+  }
+  header .nav-items ul li{
+      text-decoration: none;
+      list-style: none;
+      text-align: center;
+      background-color: rgb(249, 57, 14);
+      width: 150px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+  }
+  
+  header .nav-items ul li:first-child {
+      
+      background-color: rgb(249, 57, 14);
+      
+  }
+  header .nav-items ul li:last-child {
+      
+      background-color: rgb(14, 178, 249);
+      
+  }
+  
+  header .nav-items ul li a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 500;
+      border-radius: 5px;
+  }
+  
+  header .logo {
+      font-size: 25px;
+      font-weight: 600;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-left: 33%;
+  }
+  
+  header .profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  header .profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .hide-profile {
+    display: none;
+  }
+  
+
+  .nav-bar {
+    background-color: #eaeaea;
+  }
+  
+  .nav-bar ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+  }
+  
+  .nav-bar ul li {
+    list-style: none;
+  }
+  
+  .nav-bar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-bar ul li a:hover {
+    text-decoration: underline;
+    color: #0099ff;
+  }
+  

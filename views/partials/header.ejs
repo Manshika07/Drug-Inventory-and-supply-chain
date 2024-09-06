@@ -1,0 +1,28 @@
+<header>
+    <div class="logo">
+        <p>Auṣadhanyāya</p>
+    </div>
+    <% if (!user) { %>
+     
+        <div class="nav-items">
+            <ul>
+                <li><a href="/api/auth/signup">Sign Up</a></li>
+                <li><a href="/api/auth/login">Login</a></li>
+            </ul>
+        </div>
+    <% } else { %>
+        <div class="profile-icon">
+            <img id="profile" src="/images/profileIMG.png" alt="Profile Icon">
+        </div>
+    <% } %>
+</header>
+
+<div class="nav-bar">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/api/drugs">Inventory</a></li>
+        <li><a href="/api/orders">Orders</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</div>

@@ -21,7 +21,8 @@ router.post("/signup", async (req, res) => {
   const newUser = new userModel({
     username: req.body.username,
     email: req.body.email,
-    password: hash
+    password: hash,
+    userType: req.body.userType
   });
   await newUser
     .save()
@@ -35,14 +36,14 @@ router.post("/signup", async (req, res) => {
 
 
 router.get("/login", (req, res) => {
-  res.end("login page");
+  res.render("login");
 });
 
 
 
 router.post('/login', passport.authenticate('local', {
   failureRedirect: '/api/auth/login',
-  successRedirect: '/api/user'
+  successRedirect: '/'
 }), function(req, res) {});
 
 

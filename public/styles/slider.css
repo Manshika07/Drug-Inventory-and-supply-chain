@@ -1,0 +1,89 @@
+/* General styling */
+#Overview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10px;
+    background-color: #F1F8E8;
+}
+
+.slider {
+    width: 80%;
+    max-width: 1000px; /* Set a max-width to prevent overflow on larger screens */
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Ensure it covers the full slider width */
+}
+
+.slide {
+    min-width: 100%; /* Full width of slider */
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%; /* Make images responsive to fill the slide */
+    height: auto;
+    border-radius: 10px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: background-color 0.5s;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+button:hover {
+    background-color: rgba(0, 66, 197, 0.8);
+}
+
+.indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: #0099ff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slider {
+        width: 100%; /* Make sure slider takes full width on smaller screens */
+    }
+}
+

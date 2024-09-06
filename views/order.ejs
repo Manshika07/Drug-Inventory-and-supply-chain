@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ausadhanyāya - Personal Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/styles/orders.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+
+</head>
+
+<body>
+
+    <%- include('./partials/header.ejs') %>
+
+        <!-- Products Section -->
+        <div class="products-section">
+            <center>
+                <h2>Place Your Order</h2>
+            </center>
+            <div class="product-grid">
+                <!-- Product Cards -->
+                <%drugs.forEach(drug => { %>
+
+                    <div class="product-card">
+                        <div class="discount"></div>
+                        <img src="product1.png" alt="">
+                        <p class="product-name"><%- drug.Name %></p>
+                        <p class="product-price">Rs. <%- drug.Price %></p>
+                        <button class="add-btn">Add</button>
+                    </div>
+                   <% });%>
+            </div>
+        </div>
+        <!-- Slider -->
+        <section id="Overview">
+            <div class="slider">
+                <div class="slider-container">
+                    <div class="slide"><img src="/images/homepage-images/feature1.jpg" alt="images processing"></div>
+                    <div class="slide"><img src="/images/homepage-images/feature-2.webp" alt="images processing"></div>
+                    <div class="slide"><img src="/images/homepage-images/feature-3.jpg" alt="images processing"></div>
+                    <div class="slide"><img src="/images/homepage-images/feature-4.jpg" alt="images processing"></div>
+                </div>
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+                <div class="indicators"></div>
+            </div>
+        </section>
+
+
+        <%- include('./partials/footer.ejs')%>
+
+
+        <script src="/script/homepage.js"></script>
+</body>
+
+</html>

@@ -47,10 +47,6 @@ router.post('/login', passport.authenticate('local', {
 }), function(req, res) {});
 
 
-router.get('/profile', isLoggedIn, (req, res) => {
-  res.render('signup');
-});
-
 router.get('/logout', function(req, res, next) {
   req.logout(function(err) {
     if (err) { return next(err); }

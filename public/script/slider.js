@@ -1,9 +1,3 @@
-const profile = document.getElementById('profile');
-
-profile.addEventListener('click', () => {
-    window.location = 'localhost:3000/api/auth/profile'
-})
-
 let currentSlide = 0;
 const slideInterval = 3000; // 3 seconds
 

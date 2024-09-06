@@ -1,0 +1,272 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+/* Header */
+/* header {
+    background-color: #5597d5;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    color:white;
+    height: 60px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.nav-items ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-items ul li {
+    text-align: center;
+    background-color: rgb(249, 57, 14);
+    padding: 10px 15px;
+    border-radius: 20%;
+}
+.nav-items ul li:hover {
+    background-color: rgb(161, 35, 7);
+   
+
+}
+.nav-items ul li:last-child {
+    background-color: rgb(89, 185, 236);
+    border-radius: 20%;
+}
+
+.nav-items ul li:last-child:hover {
+    background-color: rgb(8, 74, 110);
+}
+
+
+.nav-items ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile-icon img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+/* Navbar */
+/* .navbar ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+    background-color: #d8ecff;   
+     margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar ul li {
+    list-style: none;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+    color: #020303;
+} */
+
+/* Product Grid */
+.products-section {
+    padding: 16px;
+}
+
+.products-section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 30px; /* Adjust spacing between cards */
+}
+
+
+.product-card {
+    border: 1px solid #E5E7EB;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card .discount {
+    background-color: #D1FAE5;
+    color: #065F46;
+    font-weight: bold;
+    padding: 4px;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.product-card p {
+    margin: 8px 0;
+}
+
+.product-card .product-name {
+    font-weight: bold;
+    color: #1F2937;
+}
+
+.product-card .product-price {
+    color: #6B7280;
+}
+
+.product-card .add-btn {
+    background-color: #3B82F6;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.product-card .add-btn:hover {
+    background-color: #2563EB;
+}
+
+/* Footer */
+
+
+  
+/* Responsive slider*/
+
+
+#Overview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10px;
+    margin-bottom: 5px;
+    background-color: #F1F8E8;
+    font-size:larger;
+  
+  }
+  
+  .slider {
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    min-width: 100%;
+    box-sizing:border-box;
+    padding: 100px 20px;
+    font-size: 24px;
+    color: #004d69;
+    border-radius: 10px;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 80%;
+    font-size: 18px;
+    transition: background-color 0.5s;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  button:hover {
+    background-color: rgba(0, 66, 197, 0.8);
+  }
+  
+  .indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+  }
+  
+  .indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .indicator.active {
+    background-color: #0099ff;
+  }
+  
+  
+  
+  
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+  
+    .text-col,
+    .img-col {
+      flex-basis: 100%;
+    }
+  }
+  

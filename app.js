@@ -15,11 +15,11 @@ const inventoryRouter = require('./routes/inventory');
 const userRouter = require('./routes/users');
 const supplyRouter = require('./routes/supply');
 const express = require('express')
-const vendorRouter = require('./routes/vendor')
+const vendorRouter = require('./routes/vendor.js')
 const authRouter = require('./routes/auth')
 const inventoryRouter = require('./routes/inventory')
 const userRouter = require('./routes/users.js')
-const supplyRouter = require('./routes/supply.js')
+const supplyRouter = require('./routes/orders.js')
 const path = require('path');
 const ejs = require('ejs')
 const passport = require('passport')
@@ -71,7 +71,7 @@ app.use('/api/user', userRouter);        // User management routes
 app.use('/api/auth', authRouter)    // authentication route for login and signup
 app.use('/api/drugs', restrictTo(["staff"]), inventoryRouter)      // for the drug inventory - to get the list of drugs and to add any drug to the inventory
 app.use('/api/vendor', vendorRouter)
-app.use('/api/supply-orders', supplyRouter)
+app.use('/api/orders', supplyRouter)
 app.use('/api/user', userRouter)
 
 app.get('/', (req, res) => {
@@ -103,6 +103,10 @@ server.listen(process.env.PORT || 3000, () => {
 });
 
     res.render('homepage', {user : req.user});
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {user : req.user});
 })
 
 app.listen(process.env.PORT, () => console.log(`server Started at port ${process.env.PORT}`))

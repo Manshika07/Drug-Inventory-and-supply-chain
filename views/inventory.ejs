@@ -60,236 +60,252 @@
 
   <%- include('./partials/header.ejs') %>
 
-    <table id="myTable" class="display">
-      <thead>
-        <tr>
-          <th>Drug Name</th>
-          <th>Quantity</th>
-          <th>Supplier</th>
-          <th>Price</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% drugs.forEach( drug=> { %>
+    <!-- Alert -->
+    <% if (minDrugs.length > 0) { %>
+
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <% minDrugs.forEach(drug=> { %>
+          <strong>
+            <%= drug.Name %>,
+          </strong>
+
+          <% }) %>
+            is/are reaching out of limit.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <% } %>
 
 
-          <tr>
-            <td>
-              <%= drug.Name %>
-            </td>
-            <td>
-              <%= drug.Quantity %>
-            </td>
-            <td>
-              <%= drug.Supplier %>
-            </td>
-            <td>
-              <%= drug.Price %>
-            </td>
-            <td class="action">
-              <div class="buttons">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
-                  data-id="<%= drug._id %>" data-name="<%= drug.Name %>" data-quantity="<%= drug.Quantity %>"
-                  data-supplier="<%= drug.Supplier %>" data-price="<%= drug.Price %>">Edit</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                  data-id="<%= drug._id %>">Delete</button>
+        <table id="myTable" class="display">
+          <thead>
+            <tr>
+              <th>Drug Name</th>
+              <th>Quantity</th>
+              <th>Supplier</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% drugs.forEach( drug=> { %>
+
+
+              <tr>
+                <td>
+                  <%= drug.Name %>
+                </td>
+                <td>
+                  <%= drug.Quantity %>
+                </td>
+                <td>
+                  <%= drug.Supplier %>
+                </td>
+                <td>
+                  <%= drug.Price %>
+                </td>
+                <td class="action">
+                  <div class="buttons">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
+                      data-id="<%= drug._id %>" data-name="<%= drug.Name %>" data-quantity="<%= drug.Quantity %>"
+                      data-supplier="<%= drug.Supplier %>" data-price="<%= drug.Price %>">Edit</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                      data-id="<%= drug._id %>">Delete</button>
+                  </div>
+                </td>
+              </tr>
+              <% } ) %>
+
+          </tbody>
+        </table>
+
+
+        <div class="add-drug">
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addDrugModal">Add
+            Drug</button>
+        </div>
+
+
+        <!-- edit modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Drug Entry</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-            </td>
-          </tr>
-          <% } ) %>
+              <div class="modal-body">
 
-      </tbody>
-    </table>
+                <form action="/api/drugs/update/" method="post">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Drug Name</label>
+                    <input type="text" class="form-control" id="drug-name" name="name">
+                  </div>
 
+                  <div class="mb-3">
+                    <input type="hidden" class="form-control" id="drug-id" name="id">
+                  </div>
 
-    <div class="add-drug">
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addDrugModal"
-                  >Add Drug</button>
-    </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Supplier</label>
+                    <input type="text" class="form-control" id="supplier" name="supplier">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="price" name="price">
+                  </div>
 
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                  </div>
+                </form>
 
-    <!-- edit modal -->
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Drug Entry</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+            </div>
           </div>
-          <div class="modal-body">
+        </div>
 
-            <form action="/api/drugs/update/" method="post">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Drug Name</label>
-                <input type="text" class="form-control" id="drug-name" name="name">
-              </div>
 
-              <div class="mb-3">
-                <input type="hidden" class="form-control" id="drug-id" name="id">
-              </div>
+        <!-- add Drug -->
 
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity" name="quantity">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Supplier</label>
-                <input type="text" class="form-control" id="supplier" name="supplier">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Price</label>
-                <input type="text" class="form-control" id="price" name="price">
-              </div>
 
+        <div class="modal fade" id="addDrugModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Drug</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                <form action="/api/drugs" method="post">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Drug Name</label>
+                    <input type="text" class="form-control" id="drug-name" name="name">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Supplier</label>
+                    <input type="text" class="form-control" id="supplier" name="supplier">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="price" name="price">
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- delete modal -->
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Drug Entry</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to delete this drug entry?</p>
+              </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-danger">Confirm</button>
+                <button type="button" class="btn btn-danger">Confirm</button>
               </div>
-            </form>
-
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
 
-    <!-- add Drug -->
+        <%- include('./partials/footer.ejs') %>
 
-    
-    <div class="modal fade" id="addDrugModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Drug</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-
-            <form action="/api/drugs" method="post">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Drug Name</label>
-                <input type="text" class="form-control" id="drug-name" name="name">
-              </div>
-
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity" name="quantity">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Supplier</label>
-                <input type="text" class="form-control" id="supplier" name="supplier">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Price</label>
-                <input type="text" class="form-control" id="price" name="price">
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Confirm</button>
-              </div>
-            </form>
-
-          </div>
-        </div>
-      </div>
-    </div>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
 
 
+          <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+          <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
+          <script>
+            let table = new DataTable('#myTable');
 
-    <!-- delete modal -->
+            let deleteId; // To store the id of the drug to be deleted
 
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Drug Entry</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>Are you sure you want to delete this drug entry?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-danger">Confirm</button>
-          </div>
-        </div>
-      </div>
-    </div>
+            $('#deleteModal').on('show.bs.modal', function (event) {
+              // Button that triggered the modal
+              let button = $(event.relatedTarget);
 
+              // Extract the drug ID from data-id attribute
+              deleteId = button.data('id');
 
-    <%- include('./partials/footer.ejs') %>
+              // Optionally, display the ID or drug name in the modal for confirmation
+              let modal = $(this);
+              modal.find('.modal-body').text('Are you sure you want to delete this drug entry?');
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-
-      <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-      <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
-      <script>
-        let table = new DataTable('#myTable');
-
-        let deleteId; // To store the id of the drug to be deleted
-
-        $('#deleteModal').on('show.bs.modal', function (event) {
-          // Button that triggered the modal
-          let button = $(event.relatedTarget);
-
-          // Extract the drug ID from data-id attribute
-          deleteId = button.data('id');
-
-          // Optionally, display the ID or drug name in the modal for confirmation
-          let modal = $(this);
-          modal.find('.modal-body').text('Are you sure you want to delete this drug entry?');
-
-          $('#deleteModal').find('.btn-danger').click(function () {
-            // Send an AJAX request to delete the drug
-            $.ajax({
-              url: `/api/drugs/${deleteId}`,
-              type: 'DELETE',
-              success: function (result) {
-                // On success, reload the table or remove the row from the table
-                window.location.reload(); // Or you can remove the row dynamically
-              },
-              error: function (err) {
-                console.log('Error deleting drug: ', err);
-              }
+              $('#deleteModal').find('.btn-danger').click(function () {
+                // Send an AJAX request to delete the drug
+                $.ajax({
+                  url: `/api/drugs/${deleteId}`,
+                  type: 'DELETE',
+                  success: function (result) {
+                    // On success, reload the table or remove the row from the table
+                    window.location.reload(); // Or you can remove the row dynamically
+                  },
+                  error: function (err) {
+                    console.log('Error deleting drug: ', err);
+                  }
+                });
+              });
             });
-          });
-        });
 
-          let name; // To store the id of the drug to be deleted
-          let quantity;
-          let supplier;
-          let price;
-          let editId;
+            let name; // To store the id of the drug to be deleted
+            let quantity;
+            let supplier;
+            let price;
+            let editId;
 
-          $('#editModal').on('show.bs.modal', function (event) {
-            // Button that triggered the modal
-            let button = $(event.relatedTarget);
+            $('#editModal').on('show.bs.modal', function (event) {
+              // Button that triggered the modal
+              let button = $(event.relatedTarget);
 
-            // Extract the drug ID from data-id attribute
-            editId = button.data('id');
-            name = button.data('name');
-            quantity = button.data('quantity');
-            supplier = button.data('supplier');
-            price = button.data('price');
+              // Extract the drug ID from data-id attribute
+              editId = button.data('id');
+              name = button.data('name');
+              quantity = button.data('quantity');
+              supplier = button.data('supplier');
+              price = button.data('price');
 
-            // Optionally, display the ID or drug name in the modal for confirmation
-            let modal = $(this);
-            modal.find('#drug-name').val(name);
-            modal.find('#quantity').val(quantity);
-            modal.find('#supplier').val(supplier);
-            modal.find('#price').val(price);
-            modal.find('#drug-id').val(editId);
+              // Optionally, display the ID or drug name in the modal for confirmation
+              let modal = $(this);
+              modal.find('#drug-name').val(name);
+              modal.find('#quantity').val(quantity);
+              modal.find('#supplier').val(supplier);
+              modal.find('#price').val(price);
+              modal.find('#drug-id').val(editId);
 
-            
-          });
 
-      </script>
+            });
+
+          </script>
 </body>
 
 </html>

@@ -47,7 +47,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use('/api/auth', authRouter)    // authentication route for login and signup
-app.use('/api/drugs', restrictTo(["Staff", "vendor"]), inventoryRouter)      // for the drug inventory - to get the list of drugs and to add any drug to the inventory
+app.use('/api/drugs', restrictTo(["Staff", "vendor", "Official"]), inventoryRouter)      // for the drug inventory - to get the list of drugs and to add any drug to the inventory
 app.use('/api/orders', supplyRouter)
 app.use('/api/user', userRouter)
 app.use('/', staticRouter)

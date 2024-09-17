@@ -28,8 +28,9 @@
 }
 
 img {
+    object-fit: contain;
     width: 100%; /* Make images responsive to fill the slide */
-    height: auto;
+    height: 25rem;
     border-radius: 10px;
 }
 

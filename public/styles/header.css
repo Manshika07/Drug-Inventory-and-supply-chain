@@ -80,6 +80,10 @@ header {
       font-size: 25px;
       font-weight: 600;
   }
+
+  .logo p{
+    font-weight: 800;
+  }
   
   .header-content {
     display: flex;

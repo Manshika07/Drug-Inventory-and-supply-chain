@@ -11,12 +11,18 @@ const saltRounds = 10;
 passport.use(new localStrategy(userModel.authenticate()));
 
 router.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("signup", { error: false });
 });
 
 router.post("/signup", async (req, res) => {
 
   const hash = bcrypt.hashSync(req.body.password, saltRounds);
+
+  const user1 = await userModel.findOne({ username : req.body.username });
+  const user2 = await userModel.findOne({ email : req.body.email });
+  if(user1 || user2) {
+    res.render("signup", {error : true})
+  }
 
   const newUser = new userModel({
     username: req.body.username,

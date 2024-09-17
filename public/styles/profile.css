@@ -30,6 +30,21 @@ body {
     padding: 20px;
     border-radius: 8px;
 }
+
+#track-btn{
+  width: 100px;
+  height: 40px;
+  color:#d8ecff;
+  background-color:rgba(242, 66, 7, 0.8);
+  border-radius: 10px;
+  margin-top: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+
+}
+
 .profile-header {
     display: flex;
     align-items: center;
@@ -102,6 +117,14 @@ body {
     background-color:rgba(74, 129, 239, 0.8);
     color:#020303;
     box-shadow: 2px 2px 6px 0px rgb(0, 0, 0);
+  }
+
+  .btn-container{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    margin-top: 20px;
   }
 
 

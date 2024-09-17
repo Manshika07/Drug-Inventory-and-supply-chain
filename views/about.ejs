@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./styles/slider.css">
 
     <style>
-        .about-container{
+        .about-container {
             width: 80%;
             text-align: center;
         }
@@ -22,49 +22,55 @@
 <body>
     <%- include('./partials/header.ejs') %>
 
-    <div class="head-container">
-        <div class="content">
-            <h2>We Track ! We Supply !</h2>
-            <p>Empowering Healthcare: End-to-End Drug Supply Management</p>
-            <a href="/checkin">
-                <button class="get-started-btn">GET STARTED</button>
-            </a>
+        <div class="head-container">
+            <div class="content">
+                <h2>We Track ! We Supply !</h2>
+                <p>Empowering Healthcare: End-to-End Drug Supply Management</p>
+                <% if (!user) { %>
+
+                    <a href="/checkin">
+                        <button class="get-started-btn">GET STARTED</button>
+                    </a>
+                    <% } %>
+            </div>
         </div>
-    </div>
-    
+
         <main id="Overview">
             <div class="about-container">
                 <h1>ABOUT</h1>
-                 
+
                 <hr><br>
                 <div class="contentABOUT">
-                <p id="aboutPara">
-                    The "Drug Inventory and Supply Chain Tracking System" aims to streamline and optimize the procurement,<br> distribution, and consumption of drugs in hospitals and medical institutions.<br> It ensures that the right drug reaches the right people in the right condition, quantity,<br> and at the right cost at the right time. The system provides real-time online monitoring<br> through a dashboard and tracks vendor activities from supply orders to shipment, ensuring<br> a seamless supply chain for drugs. The goal is to increase efficiency and ensure constant drug availability.
-                </p>
+                    <p id="aboutPara">
+                        The "Drug Inventory and Supply Chain Tracking System" aims to streamline and optimize the
+                        procurement,<br> distribution, and consumption of drugs in hospitals and medical
+                        institutions.<br> It ensures that the right drug reaches the right people in the right
+                        condition, quantity,<br> and at the right cost at the right time. The system provides real-time
+                        online monitoring<br> through a dashboard and tracks vendor activities from supply orders to
+                        shipment, ensuring<br> a seamless supply chain for drugs. The goal is to increase efficiency and
+                        ensure constant drug availability.
+                    </p>
                 </div>
             </div>
-                    
+
         </main>
-    <hr>           
-    <br>
-    <br>
-        
-
-
-   
-    <%- include('./partials/slider.ejs') %>
-    <%- include('./partials/footer.ejs') %>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+        <hr>
+        <br>
+        <br>
 
 
 
-    <script src="/script/homepage.js"></script>
+
+        <%- include('./partials/slider.ejs') %>
+            <%- include('./partials/footer.ejs') %>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script
+                    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+
+
+                <script src="/script/homepage.js"></script>
 </body>
 
 </html>
-
-
-
-

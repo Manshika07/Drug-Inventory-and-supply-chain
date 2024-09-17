@@ -3,13 +3,14 @@ const router = express.Router();
 
 const bodyParser = require("body-parser");
 const drugModel = require("../models/inventory");
+const VendorDrugModel = require("../models/VendorInventory");
 
 router
     .route("/")
     .get(async (req, res) => {
         const drugs = await drugModel.find();
         const minDrugs = drugs.filter((drug) => drug.Quantity <= 50);
-        
+
         res.render("inventory", {
             user: req.user,
             drugs: drugs,

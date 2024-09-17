@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,82 +11,95 @@
     <link rel="stylesheet" href="/styles/header.css">
     <link rel="stylesheet" href="/styles/footer.css">
 </head>
+
 <body>
     <%- include('./partials/header.ejs') %>
 
-    <!-- Profile -->
-    <div class="container">
-        <div class="profile-header">
-            <div class="profile-pic">👤</div>
-            <div>
-                <div class="profile-name"><%= user.username %></div>
-                <div class="profile-role"><%= user.userType %></div>
+        <!-- Profile -->
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-pic">👤</div>
+                <div>
+                    <div class="profile-name">
+                        <%= user.username %>
+                    </div>
+                    <div class="profile-role">
+                        <%= user.userType %>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="profile-info">
-            <div class="info-item">
-                <i>🏢</i> Organization: General Hospital
-            </div>
-            <div class="info-item">
-                <i>📧</i> Email: <%= user.email %>
-            </div>
-            <div class="info-item">
-                <i>🕒</i> Last Login: 2023-09-05 14:30
-            </div>
-        </div>
-        <div class="role-specific">
-            <h3>Role-specific Information</h3>
             <div class="profile-info">
-                <div class="info-item">Prescriptions: 2 Active</div>
-                <div class="info-item">Allergies: Penicillin</div>
+                <div class="info-item">
+                    <i>🏢</i> Organization: General Hospital
+                </div>
+                <div class="info-item">
+                    <i>📧</i> Email: <%= user.email %>
+                </div>
+                <div class="info-item">
+                    <i>🕒</i> Last Login: 2023-09-05 14:30
+                </div>
             </div>
+            <div class="role-specific">
+                <h3>Role-specific Information</h3>
+                <div class="profile-info">
+                    <div class="info-item">Prescriptions: 2 Active</div>
+                    <div class="info-item">Allergies: Penicillin</div>
+                </div>
+            </div>
+            <div class="access-level">
+                <i>🛡</i> Access Level: Standard
+            </div>
+            <hr>
         </div>
-        <div class="access-level">
-            <i>🛡</i> Access Level: Standard
+        <div class="container">
+            <center>
+                <h1>Supplies</h1>
+            </center>
+            <table id="myTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Drug Name</th>
+                        <th>Quantity</th>
+                        <th>Supplier</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 2</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <hr>
-    </div>
- <div class="container">
-    <center><h1>Supplies</h1></center>
-    <table id="myTable" class="display">
-        <thead>
-            <tr>
-                <th>Drug Name</th>
-                <th>Quantity</th>
-                <th>Supplier</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
-                <td>Row 1 Data 2</td>
-                <td>Row 1 Data 2</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-    
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
-    <script>
-        let table = new DataTable('#myTable');
-    </script>
 
-    <!-- Logout Button -->
-    <div class="container">
-        <hr>
-        <center>
-            <a href="/api/auth/logout"><button id="logoutBtn"> LOG OUT </button></a>
-        </center>
-    </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
+        <script>
+            let table = new DataTable('#myTable');
+        </script>
 
-    <!-- Footer -->
-    <%- include('./partials/footer.ejs')%>
+        <!-- Logout Button -->
+        <div class="btn-container">
+            <% if (user.userType==="Staff" || user.userType==="vendor" ) { %>
 
-    <script src="profile2.js"></script>
+                <center>
+                    <a href="/track"><button id="track-btn"> Track </button></a>
+                </center>
+                <% } %>
+                    <center>
+                        <a href="/api/auth/logout"><button id="logoutBtn"> LOG OUT </button></a>
+                    </center>
+        </div>
+
+        <!-- Footer -->
+        <%- include('./partials/footer.ejs')%>
+
+            <script src="profile2.js"></script>
 </body>
+
 </html>

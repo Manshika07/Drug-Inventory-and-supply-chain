@@ -21,7 +21,8 @@ const server = http.createServer(app);  // Create the HTTP server
 const io = socketio(server);            // Initialize Socket.io
 
 // Database connection
-mongoose.connect("mongodb://localhost:27017/Drug_Inventory")
+const mongoURI = process.env.MONGOURI || "mongodb://localhost:27017/Drug_Inventory";
+mongoose.connect(mongoURI)
     .then(() => console.log('Database connected'))
     .catch(error => console.log(error));
 
